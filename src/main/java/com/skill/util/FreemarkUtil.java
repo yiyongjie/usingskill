@@ -3,6 +3,7 @@ package com.skill.util;
 import com.skill.common.model.gen.GenContent;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -28,8 +29,13 @@ public class FreemarkUtil {
             configuration.setDirectoryForTemplateLoading(file);
             //获取到这个数据库里所有的表
             List<String> tableNames=DataUse.getTableNames();
-            String tableName=prop.getProperty("tableName");
-            boolean isContain=tableNames.contains(tableName);
+            String tableName=prop.getProperty("tablename");
+            boolean isContain=false;
+            if(StringUtils.isBlank(tableName)){
+                System.out.println("获取到的表名是空的");
+            }else {
+                isContain=tableNames.contains(tableName);
+            }
             if(isContain){
                 //准备一下模板参数
                 Map<String, Object> dataMap = new HashMap<String, Object>();
