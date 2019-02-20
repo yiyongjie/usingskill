@@ -29,7 +29,7 @@ public class TestController {
     private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping(value = "testone",method = RequestMethod.POST)
-    @ApiOperation(value = "测试先")
+    @ApiOperation(value = "测试数据库先")
     public APIResponse test(@RequestBody SeckillOrder seckillOrder){
         List<SeckillOrder> list=seckillOrderService.listSeckillOrder(seckillOrder);
         return APIResponse.success(list);
