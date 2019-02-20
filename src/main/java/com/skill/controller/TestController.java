@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,8 @@ public class TestController {
     private RestTemplate restTemplate;
     @Autowired
     private SeckillOrderService seckillOrderService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping(value = "testone",method = RequestMethod.POST)
     @ApiOperation(value = "测试先")
