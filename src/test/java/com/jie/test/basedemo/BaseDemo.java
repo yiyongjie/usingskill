@@ -5,7 +5,6 @@ public class BaseDemo {
         int[] array={9,3,5,1,4,2,0,7,6,8};
 //        bubble(array);
 //        select(array);
-        quick(array,0,4);
     }
 
     /**
@@ -48,15 +47,5 @@ public class BaseDemo {
             sb.append(array[k]);
         }
         System.out.println(sb.toString());
-    }
-
-    /**
-     * 快速
-     * @param array
-     * @param start
-     * @param end
-     */
-    public static void quick(int array[],int start,int end){
-
     }
 }
