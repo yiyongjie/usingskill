@@ -27,7 +27,7 @@ public class SumCode {
 
     public static void main(String[] args) {
         int[] arr={2, 7, 11, 15,20,3,8};
-        int result[]=sumArray(arr,11);
+        int result[]=sumArray(arr,28);
         System.out.println(result.toString());
     }
 }
