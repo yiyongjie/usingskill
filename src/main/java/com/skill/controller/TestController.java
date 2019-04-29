@@ -1,11 +1,10 @@
 package com.skill.controller;
 
 import com.skill.common.model.APIResponse;
-import com.skill.model.SeckillOrder;
-import com.skill.service.SeckillOrderService;
+import com.skill.model.User;
+import com.skill.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @Api(value = "TestController",description = "测试用的玩意")
@@ -27,14 +24,21 @@ public class TestController {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
-    private SeckillOrderService seckillOrderService;
+    private UserService userService;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @RequestMapping(value = "testDB",method = RequestMethod.POST)
-    @ApiOperation(value = "测试数据库")
-    public APIResponse<List<SeckillOrder>> test(@RequestBody SeckillOrder seckillOrder){
-        List<SeckillOrder> list=seckillOrderService.listSeckillOrder(seckillOrder);
+    @RequestMapping(value = "testDBSelect",method = RequestMethod.POST)
+    @ApiOperation(value = "测试数据库查询")
+    public APIResponse<List<User>> testSelect(@RequestBody User user){
+        List<User> list=userService.listUser(user);
+        return APIResponse.success(list);
+    }
+
+    @RequestMapping(value = "testDBPahe",method = RequestMethod.POST)
+    @ApiOperation(value = "测试数据库分页查询")
+    public APIResponse<List<User>> testPage(@RequestBody User user){
+        List<User> list=userService.pageUser(user);
         return APIResponse.success(list);
     }
 
@@ -52,9 +56,9 @@ public class TestController {
     @RequestMapping(value = "testHttp",method = RequestMethod.GET)
     @ApiOperation(value = "测试http")
     public APIResponse testHttp(){
-        SeckillOrder seckillOrder=new SeckillOrder();
-        seckillOrder.setId(1L);
-        ResponseEntity<SeckillOrder> responseEntity=restTemplate.postForEntity("http://127.0.0.1:8080/test/testDB",seckillOrder,SeckillOrder.class);
+        User user=new User();
+        user.setId(1);
+        ResponseEntity<User> responseEntity=restTemplate.postForEntity("http://127.0.0.1:8080/test/testDB",user,User.class);
         return APIResponse.success(responseEntity.getBody());
     }
 }

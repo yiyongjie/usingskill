@@ -4,25 +4,40 @@ import com.skill.common.model.gen.GenColumn;
 import com.skill.common.model.gen.GenContent;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @Slf4j
 public class DataUse {
 
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/yyjtest?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root123";
+    private static  String DRIVER ;
+    private static  String URL ;
+    private static  String USERNAME ;
+    private static  String PASSWORD ;
+    private static Properties prop = new Properties();
 
     private static final String SQL = "SELECT * FROM ";// 数据库操作
 
     static {
         try {
+            prop.load(new FileInputStream(new File("src/main/resources/application.properties")));
+            DRIVER=prop.getProperty("spring.datasource.driver-class-name");
+            URL=prop.getProperty("spring.datasource.url");
+            USERNAME=prop.getProperty("spring.datasource.username");
+            PASSWORD=prop.getProperty("spring.datasource.password");
             Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
             log.error("can not load jdbc driver", e);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -263,7 +278,11 @@ public class DataUse {
         for(int i=0;i<columnNames.size();i++){
             GenColumn genColumn=new GenColumn();
             genColumn.setColumn(columnNames.get(i));
-            genColumn.setColumnType(columnType.get(i));
+            if(columnType.get(i).equals("INT")){
+                genColumn.setColumnType("INTEGER");
+            }else {
+                genColumn.setColumnType(columnType.get(i));
+            }
             genColumn.setColumnRemark(columnComment.get(i));
             if(columnNames.get(i).equals(pk)){
                 genColumn.setIsPK(1);

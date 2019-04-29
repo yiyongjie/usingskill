@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.skill.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.skill.model.User" >
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <sql id="Base_Column_List" >
+        id,name
+    </sql>
+
+    <insert id="addUser" keyProperty="id" useGeneratedKeys="true">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="name != null and name != ''" >
+                    name,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="name != null and name != ''" >
+                      #{name,jdbcType=VARCHAR},
+                  </if>
+        </trim>
+    </insert>
+
+    <update id="updateUser" parameterType="com.skill.model.User">
+        update user
+        <set>
+            <if test="name != null and name != ''" >
+            name=#{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id=#{id,jdbcType=INT}
+    </update>
+
+    <select id="listUser" resultMap="BaseResultMap" parameterType="com.skill.model.User">
+        select <include refid="Base_Column_List"/> from user
+    </select>
+</mapper>
