@@ -1,5 +1,6 @@
 package com.skill.common.model.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,6 +19,7 @@ public abstract class BaseModel implements Serializable {
     private Date queryBeginDate;
     @ApiModelProperty(value = "查询结束时间")
     private Date queryEndDate;
+    @JsonIgnore
     private List<OrderModel> orderBy;
     @ApiModelProperty(value = "当前页数")
     private Integer pageNum;

@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * 基本文件生成工具
+ */
 public class FreemarkUtil {
 
     public static void createData(){

@@ -3,6 +3,9 @@ package com.skill.util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
+/**
+ * md5加密工具
+ */
 public class Md5Util {
 
     public static String getMD5(String str) {

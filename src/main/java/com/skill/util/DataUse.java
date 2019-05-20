@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Properties;
 
 @Slf4j
+/**
+ * 获取数据库,表的信息
+ */
 public class DataUse {
 
     private static  String DRIVER ;
