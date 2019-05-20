@@ -8,8 +8,9 @@ import com.skill.common.model.base.BaseModel;
 
 @Data
 @ApiModel(value = "${genContent.tableComment}")
-public class ${genContent.className}VO extends BaseModel{
+public class ${genContent.className}VO implements Serializable{
 
+   private static final long serialVersionUID = -1L;
 <#list genContent.genColumns as column>
    /*
    *${column.columnRemark}
