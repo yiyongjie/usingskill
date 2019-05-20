@@ -15,6 +15,18 @@
         <#list genContent.genColumns as column><#if column_index=0>${column.column}<#else>,${column.column}</#if></#list>
     </sql>
 
+    <sql id="Base_Where">
+        <where>
+             <#list genContent.genColumns as column>
+            <#if column.isPK!=1>
+            <if test="${column.modelColumn} != null and ${column.modelColumn} != ''" >
+                ${column.modelColumn}=${r'#{'}${column.modelColumn},jdbcType=${column.columnType}${r'}'},
+            </if>
+            </#if>
+             </#list>
+        </where>
+    </sql>
+
     <insert id="add${genContent.className}" keyProperty="id" useGeneratedKeys="true">
         insert into ${genContent.tableName}
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -53,5 +65,21 @@
 
     <select id="list${genContent.className}" resultMap="BaseResultMap" parameterType="${modelClassPath}.${genContent.className}">
         select <include refid="Base_Column_List"/> from ${genContent.tableName}
+        <where>
+            <include refid="Base_Where" />
+        </where>
+        <if test="orderBy != null and !orderBy.isEmpty()">
+            order by
+            <foreach collection="orderBy" item="orderByItem" separator=",">
+            ${r'${'}orderByItem.columnName${r'}'}  ${r'${'}orderByItem.sort${r'}'}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="count${genContent.className}" resultMap="BaseResultMap" parameterType="${modelClassPath}.${genContent.className}">
+        select count(1) from ${genContent.tableName}
+        <where>
+            <include refid="Base_Where" />
+        </where>
     </select>
 </mapper>

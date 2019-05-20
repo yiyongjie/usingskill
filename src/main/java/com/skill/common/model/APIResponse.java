@@ -4,10 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @ApiModel(value = "返回类")
-public class APIResponse<T> {
+public class APIResponse<T> implements Serializable {
 
+    private static final long serialVersionUID = -6911703604687931941L;
     /**
      * 成功
      */

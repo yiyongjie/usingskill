@@ -10,6 +10,14 @@
         id,name
     </sql>
 
+    <sql id="Base_Where">
+        <where>
+            <if test="name != null and name != ''" >
+                name=#{name,jdbcType=VARCHAR},
+            </if>
+        </where>
+    </sql>
+
     <insert id="addUser" keyProperty="id" useGeneratedKeys="true">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -31,10 +39,26 @@
             name=#{name,jdbcType=VARCHAR},
             </if>
         </set>
-        where id=#{id,jdbcType=INT}
+        where id=#{id,jdbcType=INTEGER}
     </update>
 
     <select id="listUser" resultMap="BaseResultMap" parameterType="com.skill.model.User">
         select <include refid="Base_Column_List"/> from user
+        <where>
+            <include refid="Base_Where" />
+        </where>
+        <if test="orderBy != null and !orderBy.isEmpty()">
+            order by
+            <foreach collection="orderBy" item="orderByItem" separator=",">
+            ${orderByItem.columnName}  ${orderByItem.sort}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="countUser" resultMap="BaseResultMap" parameterType="com.skill.model.User">
+        select count(1) from user
+        <where>
+            <include refid="Base_Where" />
+        </where>
     </select>
 </mapper>

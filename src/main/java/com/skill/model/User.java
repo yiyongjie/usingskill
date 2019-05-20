@@ -4,10 +4,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
+import com.skill.common.model.base.BaseModel;
 
 @Data
 @ApiModel(value = "")
-public class User {
+public class User extends BaseModel{
 
    /*
    *id

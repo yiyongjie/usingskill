@@ -12,4 +12,5 @@ public interface UserMapper {
     @Delete("delete from user where id=#{id}")
     int deleteUser(int id);
     List<User> listUser(User user);
+    int countUser(User user);
 }
