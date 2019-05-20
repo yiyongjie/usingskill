@@ -37,7 +37,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "testDBPage",method = RequestMethod.POST)
-    @ApiOperation(value = "测试数据库分页查询")
+    @ApiOperation(value = "测试数据库分页,排序查询")
     public APIResponse<PageInfo<User>> testPage(@RequestBody User user){
         PageInfo<User> list=userService.pageUser(user);
         return APIResponse.success(list);

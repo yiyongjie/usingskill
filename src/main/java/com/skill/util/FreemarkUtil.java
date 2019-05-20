@@ -54,10 +54,18 @@ public class FreemarkUtil {
 //                String mapperPosition=MAPPER_PATH +"/"+genContent.getClassName()+"Mapper"+".java";
 //                String xmlPosition=XML_PATH +"/"+genContent.getClassName()+".xml";
                 String modelPosition=prop.getProperty("MODEL_PATH") +"/"+genContent.getClassName()+".java";
+                String dtoPosition=prop.getProperty("DTO_PATH") +"/"+genContent.getClassName()+"DTO.java";
+                String voPosition=prop.getProperty("VO_PATH") +"/"+genContent.getClassName()+"VO.java";
                 String mapperPosition=prop.getProperty("MAPPER_PATH") +"/"+genContent.getClassName()+"Mapper"+".java";
                 String xmlPosition=prop.getProperty("XML_PATH") +"/"+genContent.getClassName()+"Mapper"+".xml";
                 //输出model文件
                 out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(modelPosition))));
+                modelTemplate.process(dataMap, out);
+                //输出dto文件
+                out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(dtoPosition))));
+                modelTemplate.process(dataMap, out);
+                //输出vo文件
+                out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(voPosition))));
                 modelTemplate.process(dataMap, out);
                 //输出mapper文件
                 out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(mapperPosition))));
