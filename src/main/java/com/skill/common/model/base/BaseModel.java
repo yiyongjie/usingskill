@@ -20,7 +20,7 @@ public abstract class BaseModel implements Serializable {
     private Date queryEndDate;
     private List<OrderModel> orderBy;
     @ApiModelProperty(value = "当前页数")
-    private Integer pageIndex;
+    private Integer pageNum;
     @ApiModelProperty(value = "分页大小")
     private Integer pageSize;
 }

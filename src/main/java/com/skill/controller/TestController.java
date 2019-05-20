@@ -1,5 +1,6 @@
 package com.skill.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.skill.common.model.APIResponse;
 import com.skill.model.User;
 import com.skill.service.UserService;
@@ -35,10 +36,10 @@ public class TestController {
         return APIResponse.success(list);
     }
 
-    @RequestMapping(value = "testDBPahe",method = RequestMethod.POST)
+    @RequestMapping(value = "testDBPage",method = RequestMethod.POST)
     @ApiOperation(value = "测试数据库分页查询")
-    public APIResponse<List<User>> testPage(@RequestBody User user){
-        List<User> list=userService.pageUser(user);
+    public APIResponse<PageInfo<User>> testPage(@RequestBody User user){
+        PageInfo<User> list=userService.pageUser(user);
         return APIResponse.success(list);
     }
 

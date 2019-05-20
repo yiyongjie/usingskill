@@ -1,5 +1,6 @@
 package com.skill.service;
 
+import com.github.pagehelper.PageInfo;
 import com.skill.model.User;
 
 import java.util.List;
@@ -7,5 +8,5 @@ import java.util.List;
 public interface UserService {
     List<User> listUser(User user);
 
-    List<User> pageUser(User user);
+    PageInfo<User> pageUser(User user);
 }
