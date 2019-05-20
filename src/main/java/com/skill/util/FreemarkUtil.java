@@ -47,6 +47,8 @@ public class FreemarkUtil {
                 dataMap.put("genContent",genContent);
                 //  加载模版文件
                 Template modelTemplate = configuration.getTemplate("model.ftl");
+                Template dtoTemplate = configuration.getTemplate("dto.ftl");
+                Template volTemplate = configuration.getTemplate("vo.ftl");
                 Template mapperTemplate = configuration.getTemplate("mapper.ftl");
                 Template xmlTemplate = configuration.getTemplate("xml.ftl");
                 //生成数据位置,因拆多模块所以加模块，单模块不需要
@@ -63,10 +65,10 @@ public class FreemarkUtil {
                 modelTemplate.process(dataMap, out);
                 //输出dto文件
                 out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(dtoPosition))));
-                modelTemplate.process(dataMap, out);
+                dtoTemplate.process(dataMap, out);
                 //输出vo文件
                 out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(voPosition))));
-                modelTemplate.process(dataMap, out);
+                volTemplate.process(dataMap, out);
                 //输出mapper文件
                 out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(mapperPosition))));
                 mapperTemplate.process(dataMap, out);
