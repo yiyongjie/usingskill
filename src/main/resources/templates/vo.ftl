@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Data
 @ApiModel(value = "${genContent.tableComment}")
-public class ${genContent.className}VO implements Serializable{
+public class ${genContent.voName} implements Serializable{
 
    private static final long serialVersionUID = -1L;
 <#list genContent.genColumns as column>
