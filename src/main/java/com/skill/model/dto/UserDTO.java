@@ -1,15 +1,18 @@
-package com.skill.model;
+package com.skill.model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import com.skill.common.model.base.BaseModel;
 
 @Data
 @ApiModel(value = "")
-public class User{
+public class UserDTO extends BaseModel implements Serializable {
 
+   private static final long serialVersionUID = -1L;
    /*
    *id
    */

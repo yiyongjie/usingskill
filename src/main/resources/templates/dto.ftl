@@ -1,10 +1,11 @@
-package ${modelClassPath};
+package ${dtoClassPath};
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
 import com.skill.common.model.base.BaseModel;
+import java.io.Serializable;
 
 @Data
 @ApiModel(value = "${genContent.tableComment}")

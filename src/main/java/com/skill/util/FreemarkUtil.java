@@ -45,6 +45,8 @@ public class FreemarkUtil {
 //                dataMap.put("modelClassPath", "com.skill.model");
 //                dataMap.put("mapperClassPath", "com.skill.dao");
                 dataMap.put("modelClassPath", prop.getProperty("modelClassPath"));
+                dataMap.put("dtoClassPath", prop.getProperty("dtoClassPath"));
+                dataMap.put("voClassPath", prop.getProperty("voClassPath"));
                 dataMap.put("mapperClassPath", prop.getProperty("mapperClassPath"));
                 GenContent genContent=DataUse.getModel(tableName);
                 dataMap.put("genContent",genContent);
