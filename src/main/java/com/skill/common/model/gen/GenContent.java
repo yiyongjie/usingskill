@@ -4,10 +4,11 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 /**
  * 生成对象模板参数
  */
+@Data
 public class GenContent {
     /**
      * 类名
@@ -29,5 +30,12 @@ public class GenContent {
      * 字段属性
      */
     private List<GenColumn> genColumns;
-
+    /**
+     * dto
+     */
+    private String dtoName;
+    /**
+     * vo
+     */
+    private String voName;
 }

@@ -4,6 +4,7 @@ import com.skill.common.model.APIResponse;
 import com.skill.common.page.PageInfo;
 import com.skill.model.User;
 import com.skill.model.dto.UserDTO;
+import com.skill.model.vo.UserVO;
 import com.skill.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,15 +33,15 @@ public class TestController {
 
     @RequestMapping(value = "testDBSelect",method = RequestMethod.POST)
     @ApiOperation(value = "测试数据库查询")
-    public APIResponse<List<User>> testSelect(@RequestBody UserDTO dto){
-        List<User> list=userService.listUser(dto);
+    public APIResponse<List<UserVO>> testSelect(@RequestBody UserDTO dto){
+        List<UserVO> list=userService.listUser(dto);
         return APIResponse.success(list);
     }
 
     @RequestMapping(value = "testDBPage",method = RequestMethod.POST)
     @ApiOperation(value = "测试数据库分页,排序查询")
-    public APIResponse<PageInfo<User>> testPage(@RequestBody UserDTO dto){
-        PageInfo<User> list=userService.pageUser(dto);
+    public APIResponse<PageInfo<UserVO>> testPage(@RequestBody UserDTO dto){
+        PageInfo<UserVO> list=userService.pageUser(dto);
         return APIResponse.success(list);
     }
 

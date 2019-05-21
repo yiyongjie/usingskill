@@ -273,6 +273,8 @@ public class DataUse {
         genContent.setVarName(varName.toString());
         genContent.setTableName(tableName);
         genContent.setTableComment(tableComment);
+        genContent.setDtoName(className.toString()+"DTO");
+        genContent.setVoName(className.toString()+"VO");
         //拿到所有的字段属性
         List<String> columnNames=getColumnNames(tableName);
         List<String> columnType=getColumnTypes(tableName);

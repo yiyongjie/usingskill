@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="${mapperClassPath}.${genContent.className}Mapper" >
-  <resultMap id="BaseResultMap" type="${modelClassPath}.${genContent.className}" >
+  <resultMap id="BaseResultMap" type="${voClassPath}.${genContent.voName}" >
         <#list genContent.genColumns as column>
             <#if column.isPK==1>
             <id column="${column.column}" property="${column.modelColumn}" jdbcType="${column.columnType}" />

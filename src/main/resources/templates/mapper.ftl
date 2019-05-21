@@ -2,6 +2,7 @@ package ${mapperClassPath};
 
 import org.apache.ibatis.annotations.Mapper;
 import ${modelClassPath}.${genContent.className};
+import ${voClassPath}.${genContent.voName};
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 
@@ -11,6 +12,6 @@ public interface ${genContent.className}Mapper {
     int update${genContent.className}(${genContent.className} ${genContent.varName});
     @Delete("delete from ${genContent.tableName} where <#list genContent.genColumns as column><#if column.isPK==1>${column.column}=${r'#{'}${column.modelColumn}${r'}'}</#if></#list>")
     int delete${genContent.className}(<#list genContent.genColumns as column><#if column.isPK==1>${column.columnJavaType} ${column.modelColumn}</#if></#list>);
-    List<${genContent.className}> list${genContent.className}(${genContent.className} ${genContent.varName});
+    List<${genContent.voName}> list${genContent.className}(${genContent.className} ${genContent.varName});
     int count${genContent.className}(${genContent.className} ${genContent.varName});
 }
