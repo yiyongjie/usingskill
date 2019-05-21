@@ -8,7 +8,7 @@ import com.skill.common.model.base.BaseModel;
 
 @Data
 @ApiModel(value = "${genContent.tableComment}")
-public class ${genContent.className}{
+public class ${genContent.className} extends BaseModel{
 
 <#list genContent.genColumns as column>
    /*

@@ -8,7 +8,7 @@ import com.skill.common.model.base.BaseModel;
 
 @Data
 @ApiModel(value = "")
-public class User{
+public class User extends BaseModel{
 
    /*
    *id
