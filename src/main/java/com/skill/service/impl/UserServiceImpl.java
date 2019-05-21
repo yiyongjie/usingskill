@@ -1,7 +1,7 @@
 package com.skill.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.skill.common.page.PageInfo;
 import com.skill.common.model.base.OrderModel;
 import com.skill.dao.UserMapper;
 import com.skill.model.User;

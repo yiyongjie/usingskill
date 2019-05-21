@@ -1,7 +1,7 @@
 package com.skill.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.skill.common.model.APIResponse;
+import com.skill.common.page.PageInfo;
 import com.skill.model.User;
 import com.skill.model.dto.UserDTO;
 import com.skill.service.UserService;

@@ -1,6 +1,6 @@
 package com.skill.service;
 
-import com.github.pagehelper.PageInfo;
+import com.skill.common.page.PageInfo;
 import com.skill.model.User;
 import com.skill.model.dto.UserDTO;
 
